@@ -1,4 +1,6 @@
 # AudioCutter
+CUT FILE WORK ONLY ON SERVER OR LOCAL SERVER!!!!BECAUSE IT HAS REQUESTS TO MYSELF
+
 Record your sound or download mp3 file, then choise timeline and cut it in browser interface
 
 1) Record your sound, then choise one or two timelines on graphic. After that, your record sound will cut in your choice timeline
