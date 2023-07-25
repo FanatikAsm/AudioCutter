@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>InVoice.com</title>
+    <style>  
+        body{
+            margin: 0;
+            padding: 0;
+            background: #DEDEDE;
+        }
+        
+        .header{
+            width: 100%;
+            height: 4vw;
+            background: #fff;
+        }
+        
+        .main{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            position: fixed;
+            width: 7%;
+            height: 100%;
+        }
+        
+        .main>div{
+            width: 40%;
+        }
+        
+        .main>div>svg{
+            margin-bottom: 2vw;
+        }
+        
+        .main>svg{
+            width: 40%;
+        }
+        
+        .container{
+            position: absolute;
+            top: 5vw;
+            left: 7%;
+            width: 85%;
+            height: auto;
+        }
+        
+        .container_block{
+            width: 100%;
+            background: #fff;
+            border-radius: 1vw;
+        }
+        
+        .footer{
+            text-align: center;
+            font-size: 1.5vw;
+            margin-top: 1vw;
+        }
+        
+        .container_block_record,.container_block_download{
+            width: 100%;
+        }
+        
+        .container_block_download{
+            display: none;
+        }
+        
+        .active_circle{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            right: 0;
+            height: calc(100% - 4vw);
+            width: 8%;
+        }
+        
+        .active_circle_bl{
+            height: 1.5vw;
+            width: 1.5vw;
+            background: #95938e;
+            border-radius: 50%;
+            margin-bottom: .8vw;
+        }
+        
+        .container_block_record_first,.container_block_download_first{
+            height: auto;
+            width: 100%;
+        }
+        
+        .container_block_record_first_container1,.container_block_download_first_container1{
+            height: 8vw;
+            width: 100%;
+            border-bottom: 0.15vw solid gray;
+        }
+        
+        .container_block_download_first_container2_icon{
+            margin-top: 1vw;
+            margin-bottom: 6vw;
+        }
+        
+        .container_block_record_first_container1>p,.container_block_download_first_container1>p{
+            font: 600 2vw Arial;
+            margin: 0;
+            padding: 2vw 0 .7vw 3%;
+        }
+        
+        .container_block_record_first_container1>span,.container_block_download_first_container1>span{
+            font: 400 1.5vw Arial;
+            padding-left: 3%;
+        }
+        
+        .container_block_record_first_container1>.record_block,.container_block_download_first_container1>.download_block{
+            color: #66fcf1;
+        }
+        
+        .container_block_record_first_container2,.container_block_download_first_container2{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 30vw;
+            width: 100%;
+        }
+        
+        .container_block_download_first_container2_choise{
+            height: 19vw;
+            width: 47%;
+            border-radius: 1.5vw;
+            border: .2vw solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3vw;
+            position: relative;
+        }
+        
+        .container_block_download_first_container2>div{
+            display: flex;
+            justify-content: space-between;
+            width: 40%;
+            margin-bottom: 2vw;
+        }
+        
+        .container_block_download_first_container2>label{
+            padding: 1vw 3vw;
+            background: #66fcf1;
+            font: 400 1.2vw Arial;
+            border-radius: 0.5vw;
+            border: 0;
+            color: #fff;
+        }
+        
+        .container_block_download_first_container2>input{
+            display: none;
+        }
+        
+        .container_block_download_first_container2_button{
+            width: 20%;
+            height: 3vw;
+            background: #66fcf1;
+            font: 400 1.2vw Arial;
+            border-radius: 0.5vw;
+            border: 0;
+            color: #fff;
+        }
+        
+        .container_block_record_first_container2_container{
+            display: flex;
+            justify-content: space-between;
+            height: 4vw;
+            width: 20%;
+        }
+        
+        .container_block_record_first_container2_stop{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            height: 3vw;
+            width: 55%;
+            border-radius: 5vw;
+            background: rgba(102, 252, 241, .5);
+            font-size: 1.2vw;
+        }
+        
+        .container_block_record_first_container2_payse, .container_block_download_first_container2_payse{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 3vw;
+            width: 3vw;
+            border-radius: 50%;
+            background: rgba(102, 252, 241, .5);
+        }
+        
+        .container_block_record_first_container2_payse_play{
+            border: 1vw solid transparent;
+            border-left: 1.2vw solid rgb(246, 56, 103);
+            margin-left: 1.3vw;
+        }
+        
+        .container_block_download_first_container2_payse_button{
+            background: rgb(246, 56, 103);
+            height: 1.4vw;
+            width: 1.4vw;
+        }
+        
+        .container_block_record_first_container2_payse_button{
+            position: absolute;
+            top: 0.8vw;
+            left: 0.8vw;
+            height: 1.4vw;
+            width: 1.4vw;
+        }
+        
+        
+        .container_block_record_first_container2_stop_div{
+            position: relative;
+            height: 3vw;
+            width: 3vw;
+            background: none;
+            border-radius: 5vw;
+            margin-right: 10%;
+        }
+        
+        .container_block_download_second,.container_block_record_second{
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /*.{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: green;
+            width: 3vw;
+            height: 3vw;
+            border-radius: 50%;
+            font: 200 4vw Arial;
+            margin-bottom: 1vw;
+        }*/
+        
+        .container_block_download_second_settings{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4vw;
+            width: 16%;
+        } 
+        
+        .container_block_download_second_buttons{
+            display: flex;
+            justify-content: center;
+            height: 4vw;
+            width: 50%;
+        }
+        
+        .container_block_download_second_buttons1{
+            height: 3vw;
+            width: 30%;
+            background: none;
+            font: 400 1.2vw Arial;
+            border-radius: 0.5vw;
+            border: 0.15vw solid #66fcf1;
+            margin-right: 3%;
+            color: #66fcf1;
+        }
+        
+        .container_block_download_second_buttons2,.container_block_record_second_buttons2{
+            height: 3vw;
+            width: 30%;
+            background: #66fcf1;
+            font: 400 1.2vw Arial;
+            border-radius: 0.5vw;
+            border: 0; 
+            color: #fff;
+        }
+        
+        .container_block_third{
+            display: none;
+            width: 100%;
+            height: auto;
+            padding: 4vw 0;
+        }
+        
+        .delete_choise{
+            position: absolute;
+            top: -2%;
+            right: 8%;
+            font-family: arial;
+            font-weight: 600;
+        }
+        
+        .container_block_download_first_container2_choise>svg{
+            width: 8vw;
+            margin-top: 3vw;
+        }
+        
+        .file_name{
+            display: flex;
+            justify-content: center;
+            width: 80%;
+        }
+        
+        .container_block_download_first_container2_add{
+            margin-bottom: 1vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #95938e;
+            width: 6vw;
+            height: 6vw;
+            border-radius: 50%;
+            font: 200 4vw Arial;
+        }
+        
+        .container_block_record_second{
+            flex-direction: column;
+            align-items: center;
+        }
+                
+        .pie {
+            --p: 0;
+            --b: .35vw;
+            --c: rgba(246, 56, 103, 1);
+            --w: 3vw;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: var(--w);
+            aspect-ratio: 1;
+            display: inline-grid;
+            place-content: center;
+        }
+
+        .pie:before,
+        .pie:after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+        }
+
+       .pie:before {
+            inset: 0;
+            background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,conic-gradient(var(--c) calc(var(--p)*1%), #0000 0);
+            -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+            mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+        }
+
+        .pie:after {
+            inset: calc(50% - var(--b)/2);
+            background: var(--c);
+            transform: rotate(calc(var(--p)*3.6deg)) translateY(calc(60% - var(--w)/2));
+        } 
+        
+        .container_block_record_first_container2_payse_block{
+            background: rgb(246, 56, 103);
+            width: 20%;
+            height: 1.5vw;
+            margin-right: 5%;
+            margin-left: 5%;
+        }
+        
+        #add_file0,#add_file1,#add_file2,#audio_test{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+  <header class="header">
+      
+  </header>
+    
+  <div class="main">
+     <div>
+         <svg viewBox="0 0 32 32" fill="none">
+             <path d="M29.5779 15.7813L17.5029 3.71258L16.6935 2.9032C16.5091 2.72001 16.2597 2.61719 15.9997 2.61719C15.7398 2.61719 15.4904 2.72001 15.306 2.9032L2.42161 15.7813C2.23265 15.9696 2.08331 16.1937 1.9824 16.4406C1.8815 16.6875 1.83108 16.9521 1.83411 17.2188C1.84661 18.3188 2.76224 19.197 3.86224 19.197H5.19036V29.3751H26.8091V19.197H28.1654C28.6997 19.197 29.2029 18.9876 29.581 18.6095C29.7672 18.4239 29.9147 18.2032 30.015 17.9602C30.1153 17.7172 30.1664 17.4567 30.1654 17.1938C30.1654 16.6626 29.956 16.1595 29.5779 15.7813ZM17.7497 27.1251H14.2497V20.7501H17.7497V27.1251ZM24.5591 16.947V27.1251H19.7497V20.0001C19.7497 19.3095 19.1904 18.7501 18.4997 18.7501H13.4997C12.8091 18.7501 12.2497 19.3095 12.2497 20.0001V27.1251H7.44036V16.947H4.44036L16.0029 5.39383L16.7247 6.1157L27.5622 16.947H24.5591Z" fill="#0C1827"/>
+         </svg>
+         <svg viewBox="0 0 32 32" fill="none">
+             <path d="M4 4H13.3333V16H4V4ZM18.6667 4H28V10.6667H18.6667V4ZM18.6667 16H28V28H18.6667V16ZM4 21.3333H13.3333V28H4V21.3333Z" stroke="#0C1827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg>
+         <svg viewBox="0 0 28 26" fill="none">
+             <path d="M18.0004 22.504C19.1377 22.8342 20.3161 23.0012 21.5004 23C23.4049 23.0028 25.2847 22.5685 26.995 21.7307C27.0456 20.5356 26.7052 19.3566 26.0254 18.3724C25.3456 17.3882 24.3635 16.6525 23.228 16.2767C22.0924 15.9009 20.8653 15.9055 19.7326 16.2899C18.5999 16.6742 17.6234 17.4174 16.951 18.4067M18.0004 22.504V22.5C18.0004 21.016 17.6204 19.62 16.9524 18.4067M18.0004 22.504V22.6453C15.4343 24.1908 12.4945 25.0051 9.49902 25C6.39102 25 3.48302 24.14 1.00036 22.6453L0.999025 22.5C0.998002 20.6126 1.62518 18.7786 2.78167 17.287C3.93816 15.7955 5.55819 14.7312 7.38634 14.2621C9.2145 13.793 11.1468 13.9457 12.8786 14.6961C14.6104 15.4465 16.0431 16.752 16.951 18.4067M14.0004 5.5C14.0004 6.69347 13.5263 7.83807 12.6823 8.68198C11.8384 9.52589 10.6938 10 9.50036 10C8.30688 10 7.16229 9.52589 6.31838 8.68198C5.47446 7.83807 5.00036 6.69347 5.00036 5.5C5.00036 4.30653 5.47446 3.16193 6.31838 2.31802C7.16229 1.47411 8.30688 1 9.50036 1C10.6938 1 11.8384 1.47411 12.6823 2.31802C13.5263 3.16193 14.0004 4.30653 14.0004 5.5V5.5ZM25.0004 8.5C25.0004 9.42826 24.6316 10.3185 23.9752 10.9749C23.3189 11.6313 22.4286 12 21.5004 12C20.5721 12 19.6819 11.6313 19.0255 10.9749C18.3691 10.3185 18.0004 9.42826 18.0004 8.5C18.0004 7.57174 18.3691 6.6815 19.0255 6.02513C19.6819 5.36875 20.5721 5 21.5004 5C22.4286 5 23.3189 5.36875 23.9752 6.02513C24.6316 6.6815 25.0004 7.57174 25.0004 8.5V8.5Z" stroke="#0C1827" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+         </svg>
+         <svg viewBox="0 0 32 32" fill="none">
+             <path d="M27.0002 16.7599V15.2299L28.9202 13.5499C29.2742 13.238 29.5064 12.8109 29.576 12.3443C29.6455 11.8777 29.5478 11.4015 29.3002 10.9999L26.9403 6.99992C26.7649 6.69618 26.5127 6.4439 26.2091 6.26838C25.9054 6.09286 25.561 6.00028 25.2102 5.99992C24.9929 5.99825 24.7767 6.03203 24.5702 6.09992L22.1402 6.91992C21.7207 6.64113 21.2831 6.39057 20.8302 6.16992L20.3202 3.64992C20.2288 3.18952 19.9783 2.77596 19.6127 2.48162C19.2471 2.18728 18.7896 2.03092 18.3203 2.03992H13.6403C13.1709 2.03092 12.7134 2.18728 12.3478 2.48162C11.9822 2.77596 11.7317 3.18952 11.6403 3.64992L11.1303 6.16992C10.6742 6.39052 10.2332 6.64107 9.81025 6.91992L7.43025 6.05992C7.22155 6.00554 7.00543 5.98528 6.79025 5.99992C6.43953 6.00028 6.09506 6.09286 5.79142 6.26838C5.48777 6.4439 5.23562 6.69618 5.06025 6.99992L2.70025 10.9999C2.46684 11.4009 2.3801 11.8706 2.4549 12.3285C2.5297 12.7864 2.76138 13.204 3.11025 13.5099L5.00025 15.2399V16.7699L3.11025 18.4499C2.75152 18.7579 2.51351 19.1831 2.43845 19.6499C2.36339 20.1167 2.45615 20.595 2.70025 20.9999L5.06025 24.9999C5.23562 25.3037 5.48777 25.5559 5.79142 25.7315C6.09506 25.907 6.43953 25.9996 6.79025 25.9999C7.0076 26.0016 7.22377 25.9678 7.43025 25.8999L9.86025 25.0799C10.2798 25.3587 10.7174 25.6093 11.1703 25.8299L11.6803 28.3499C11.7717 28.8103 12.0222 29.2239 12.3878 29.5182C12.7534 29.8126 13.2109 29.9689 13.6803 29.9599H18.4003C18.8696 29.9689 19.3271 29.8126 19.6927 29.5182C20.0583 29.2239 20.3088 28.8103 20.4002 28.3499L20.9102 25.8299C21.3663 25.6093 21.8073 25.3588 22.2302 25.0799L24.6502 25.8999C24.8567 25.9678 25.0729 26.0016 25.2903 25.9999C25.641 25.9996 25.9854 25.907 26.2891 25.7315C26.5927 25.5559 26.8449 25.3037 27.0203 24.9999L29.3002 20.9999C29.5337 20.5989 29.6204 20.1293 29.5456 19.6714C29.4708 19.2134 29.2391 18.7958 28.8902 18.4899L27.0002 16.7599ZM25.2102 23.9999L21.7803 22.8399C20.9773 23.52 20.0596 24.0517 19.0702 24.4099L18.3603 27.9999H13.6403L12.9303 24.4499C11.9487 24.0815 11.036 23.5508 10.2303 22.8799L6.79025 23.9999L4.43025 19.9999L7.15025 17.5999C6.96535 16.5648 6.96535 15.5051 7.15025 14.4699L4.43025 11.9999L6.79025 7.99992L10.2203 9.15992C11.0232 8.47981 11.9409 7.94817 12.9303 7.58992L13.6403 3.99992H18.3603L19.0702 7.54992C20.0518 7.91834 20.9645 8.44906 21.7703 9.11992L25.2102 7.99992L27.5702 11.9999L24.8503 14.3999C25.0352 15.4351 25.0352 16.4948 24.8503 17.5299L27.5702 19.9999L25.2102 23.9999Z M16 22C14.8133 22 13.6533 21.6481 12.6666 20.9888C11.6799 20.3295 10.9109 19.3925 10.4567 18.2961C10.0026 17.1997 9.88378 15.9933 10.1153 14.8295C10.3468 13.6656 10.9182 12.5965 11.7574 11.7574C12.5965 10.9182 13.6656 10.3468 14.8295 10.1153C15.9933 9.88378 17.1997 10.0026 18.2961 10.4567C19.3925 10.9109 20.3295 11.6799 20.9888 12.6666C21.6481 13.6533 22 14.8133 22 16C22.008 16.7902 21.8583 17.574 21.5596 18.3056C21.2609 19.0371 20.8193 19.7018 20.2605 20.2605C19.7018 20.8193 19.0371 21.2609 18.3056 21.5596C17.574 21.8583 16.7902 22.008 16 22ZM16 12C15.4713 11.9877 14.9457 12.0827 14.4548 12.2794C13.9639 12.4761 13.5181 12.7702 13.1442 13.1442C12.7702 13.5181 12.4761 13.9639 12.2794 14.4548C12.0827 14.9457 11.9877 15.4713 12 16C11.9877 16.5287 12.0827 17.0543 12.2794 17.5452C12.4761 18.0361 12.7702 18.4819 13.1442 18.8558C13.5181 19.2298 13.9639 19.524 14.4548 19.7206C14.9457 19.9173 15.4713 20.0123 16 20C16.5287 20.0123 17.0543 19.9173 17.5452 19.7206C18.0361 19.524 18.4819 19.2298 18.8558 18.8558C19.2298 18.4819 19.524 18.0361 19.7206 17.5452C19.9173 17.0543 20.0123 16.5287 20 16C20.0123 15.4713 19.9173 14.9457 19.7206 14.4548C19.524 13.9639 19.2298 13.5181 18.8558 13.1442C18.4819 12.7702 18.0361 12.4761 17.5452 12.2794C17.0543 12.0827 16.5287 11.9877 16 12Z" fill="#0C1827"/>
+         </svg>
+     </div>
+      
+     <svg viewBox="0 0 32 32" fill="none">
+        <g clip-path="url(#clip0_452_395)">
+        <path d="M15.9997 4C16.3395 4.00038 16.6664 4.13051 16.9135 4.3638C17.1606 4.59709 17.3093 4.91594 17.3292 5.25519C17.3492 5.59445 17.2388 5.92851 17.0207 6.18911C16.8025 6.44971 16.4931 6.6172 16.1557 6.65733L15.9997 6.66667H9.33301C9.00643 6.66671 8.69123 6.78661 8.44718 7.00362C8.20313 7.22063 8.04722 7.51967 8.00901 7.844L7.99967 8V24C7.99972 24.3266 8.11962 24.6418 8.33663 24.8858C8.55364 25.1299 8.85267 25.2858 9.17701 25.324L9.33301 25.3333H15.333C15.6728 25.3337 15.9997 25.4638 16.2468 25.6971C16.4939 25.9304 16.6427 26.2493 16.6626 26.5885C16.6825 26.9278 16.5721 27.2618 16.354 27.5224C16.1359 27.783 15.8265 27.9505 15.489 27.9907L15.333 28H9.33301C8.31273 28.0001 7.33099 27.6102 6.58866 26.9103C5.84633 26.2103 5.39953 25.2532 5.33967 24.2347L5.33301 24V8C5.33295 6.97972 5.72277 5.99798 6.42272 5.25565C7.12266 4.51332 8.07982 4.06652 9.09834 4.00667L9.33301 4H15.9997ZM23.609 11.2853L27.3797 15.0573C27.6296 15.3074 27.7701 15.6464 27.7701 16C27.7701 16.3536 27.6296 16.6926 27.3797 16.9427L23.609 20.7147C23.3588 20.9647 23.0196 21.1051 22.6659 21.1049C22.3122 21.1048 21.973 20.9642 21.723 20.714C21.473 20.4638 21.3326 20.1246 21.3327 19.7709C21.3329 19.4172 21.4735 19.078 21.7237 18.828L23.2183 17.3333H15.9997C15.6461 17.3333 15.3069 17.1929 15.0569 16.9428C14.8068 16.6928 14.6663 16.3536 14.6663 16C14.6663 15.6464 14.8068 15.3072 15.0569 15.0572C15.3069 14.8071 15.6461 14.6667 15.9997 14.6667H23.2183L21.7237 13.172C21.4735 12.922 21.3329 12.5828 21.3327 12.2291C21.3326 11.8754 21.473 11.5362 21.723 11.286C21.973 11.0358 22.3122 10.8952 22.6659 10.8951C23.0196 10.8949 23.3588 11.0353 23.609 11.2853Z" fill="#0C1827"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_452_395">
+        <rect width="32" height="32" fill="white"/>
+        </clipPath>
+        </defs>
+    </svg>
+  </div>
+    
+  <div class="container">
+     <div class="container_block">
+         <div class="container_block_record">
+             <div class="container_block_record_first">
+                 <div class="container_block_record_first_container1">
+                     <p>Add voice</p>
+                     <span class="record_block">Record voice</span><span class="download_block">Download voice</span>
+                 </div>
+                 <div class="container_block_record_first_container2">    
+                     <svg class="container_block_record_first_container2_icon" width="5vw" height="5vw" viewBox="0 0 56 56" fill="none">
+                        <circle class="container_block_record_first_container2_icon" cx="28" cy="28" r="28" fill="#44C9C5" fill-opacity="0.3"/>
+                        <circle class="container_block_record_first_container2_icon" cx="28" cy="28" r="20" fill="#F63867"/>
+                        <path class="container_block_record_first_container2_icon" d="M32 28V22C32 19.783 30.215 17.979 28.021 17.979C27.9506 17.9794 27.8805 17.9878 27.812 18.004C26.7853 18.0538 25.8169 18.4964 25.1074 19.2402C24.3978 19.984 24.0014 20.972 24 22V28C24 30.206 25.794 32 28 32C30.206 32 32 30.206 32 28ZM26 28V22C26 20.897 26.897 20 28 20C28.0547 20 28.1092 19.995 28.163 19.985C29.188 20.06 30 20.935 30 22V28C30 29.103 29.103 30 28 30C26.897 30 26 29.103 26 28Z M22 28H20C20 32.072 23.061 35.436 27 35.931V38H29V35.931C32.939 35.436 36 32.073 36 28H34C34 31.309 31.309 34 28 34C24.691 34 22 31.309 22 28Z" fill="white"/>
+                    </svg>
+                 </div> 
+             </div>
+             <div class="container_block_record_second"></div>
+         </div>
+         <div class="container_block_download">
+             <div class="container_block_download_first">
+                 <div class="container_block_download_first_container1">
+                     <p>Add voice</p>
+                     <span class="record_block">Record voice</span><span class="download_block">Download voice</span>
+                 </div>
+                 <div class="container_block_download_first_container2">
+                     <p>Download your sound</p>
+                     <svg class="container_block_download_first_container2_icon" width="5vw" height="5vw" viewBox="0 0 74 87" fill="none">
+                        <path class="container_block_download_first_container2_icon" d="M26.6668 65.6667H47.3335C50.1752 65.6667 52.5002 63.3417 52.5002 60.5V34.6667H60.7151C65.3135 34.6667 67.6385 29.0867 64.3835 25.8317L40.6685 2.11667C40.1905 1.63771 39.6227 1.25771 38.9977 0.998439C38.3727 0.739168 37.7027 0.605713 37.026 0.605713C36.3493 0.605713 35.6793 0.739168 35.0543 0.998439C34.4292 1.25771 33.8615 1.63771 33.3835 2.11667L9.66849 25.8317C6.4135 29.0867 8.68683 34.6667 13.2852 34.6667H21.5002V60.5C21.5002 63.3417 23.8252 65.6667 26.6668 65.6667ZM6.00016 76H68.0001C70.8418 76 73.1668 78.325 73.1668 81.1667C73.1668 84.0083 70.8418 86.3333 68.0001 86.3333H6.00016C3.1585 86.3333 0.833496 84.0083 0.833496 81.1667C0.833496 78.325 3.1585 76 6.00016 76Z" fill="#DEDEDE"/>
+                    </svg>
+                    <label id="file" for="add_file0">Choose file</label>
+                 </div> 
+             </div>
+             <div class="container_block_download_second"></div>
+         </div>
+         <div class="container_block_third"><audio class="container_block_third_sound1" src="" controls></audio><audio class="container_block_third_sound2" src="" controls></audio></div>
+     </div>
+     <div class="footer">@ Invoice 2022-2023 | English | Privacy policy | User agreement | Google Play | AppStore</div>
+     <input onchange="check_file(this,0)" id="add_file0" type="file">
+     <input onchange="check_file(this,1)" id="add_file1" type="file">
+     <input id="add_file2" type="file">
+     <audio id="audio_test" src=""></audio>
+  </div>
+    
+  <div class="active_circle">
+     <div data-id="0" class="active_circle_bl"></div>
+     <div data-id="1" class="active_circle_bl"></div>
+     <div data-id="2" class="active_circle_bl"></div>
+  </div>
+<script src="cutter.js"></script>   
+<script>
+    
+var leftchannel = [],rightchannel = [],recordingLength = 0;
+var sampleRate = 44100;
+var cutterLib = new mp3cutter();
+var Activ_Record_Page = 0;
+var Activ_Download_Page = 0;
+var Record_Page_Root = 0;
+var Download_Page_Root = 0;
+    
+var intevlav1;
+var intevlav2;
+    
+    
+var recordcircle=0;
+var recordtimer;
+var recordtimer2;
+var recordsecondX = 0;
+var recorminnuteX = 0;
+    
+document.onclick = e=>{
+    if( e.target.className == 'record_block'){
+        document.getElementsByClassName('container_block_download')[0].style.display = 'none';
+        document.getElementsByClassName('container_block_record')[0].style.display = 'block';
+        document.getElementsByClassName('active_circle_bl')[ Activ_Record_Page ].click();
+    }else if( e.target.className == 'download_block' ){
+        document.getElementsByClassName('container_block_record')[0].style.display = 'none'; 
+        document.getElementsByClassName('container_block_download')[0].style.display = 'block';
+        document.getElementsByClassName('active_circle_bl')[ Activ_Download_Page ].click();
+    }else if( e.target.getAttribute('class') == 'container_block_record_first_container2_icon' ){
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+        navigator.getUserMedia({audio: true},function(e) { 
+            document.getElementsByClassName('container_block_record_first_container2')[0].innerHTML = '<div class="container_block_record_first_container2_container"><div class="container_block_record_first_container2_stop"><div class="container_block_record_first_container2_stop_div">      <div class="pie"></div><div class="container_block_record_first_container2_payse_button"></div>        </div><p id="record_time">00:00</p></div><div class="container_block_record_first_container2_payse"><div class="container_block_record_first_container2_payse_block"></div><div class="container_block_record_first_container2_payse_block"></div></div></div>';
+            
+            
+            recordtimer = setInterval(() => { 
+                recordsecondX++;
+                if( recordsecondX == 60 ){
+                   recorminnuteX++;
+                   if(recorminnuteX == 15){
+                      document.getElementsByClassName('container_block_record_first_container2_payse_button')[0].click();
+                   }else{
+                      recordsecondX = 0;  
+                   }
+                }
+                   
+                document.getElementById('record_time').innerHTML = (recorminnuteX < 15 ? '0'+recorminnuteX : recorminnuteX) +':' + (recordsecondX < 10 ?  '0'+recordsecondX : recordsecondX);
+             }, 1000);
+            
+            
+            recordtimer2 = setInterval(() => {
+                recordcircle += 0.165;
+                if (recordcircle > 100) {
+                    document.getElementsByClassName('pie')[0].style.borderRadius = 50 + '%';
+                    document.getElementsByClassName('pie')[0].style.background = 'rgba(246, 56, 103, 1)';
+                    document.getElementsByClassName('container_block_record_first_container2_payse_button')[0].style.background = '#ffffff';
+                }
+                document.getElementsByClassName('pie')[0].style.setProperty('--p', recordcircle);
+            }, 25);
+            
+            window.AudioContext = window.AudioContext || window.webkitAudioContext;
+            context = new AudioContext();
+            mediaStream = context.createMediaStreamSource(e);
+            recorder = context.createScriptProcessor(2048, 2, 2) || context.createJavaScriptNode(2048, 2, 2);
+            
+            recorder.onaudioprocess = function(e) {
+                leftchannel.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+                rightchannel.push(new Float32Array(e.inputBuffer.getChannelData(1)));
+                recordingLength += 2048;
+            }
+            mediaStream.connect(recorder);
+            recorder.connect(context.destination);
+        },function(e) {
+            document.getElementsByClassName('container_block_record_first_container2')[0].innerHTML = e + '<br> Or your device not support record voice';
+        });
+    }else if( e.target.getAttribute('class') == 'container_block_download_first_container2_icon' ){
+        document.getElementById('file').click();
+    }else if(e.target.className == 'container_block_record_first_container2_payse' || e.target.className == 'container_block_record_first_container2_payse_block'){
+        clearTimeout(recordtimer);
+        clearTimeout(recordtimer2);
+        recorder.onaudioprocess = function(e) {};
+        document.getElementsByClassName('container_block_record_first_container2_payse')[0].innerHTML = '<div class="container_block_record_first_container2_payse_play"></div>';
+    }else if(e.target.className == 'container_block_record_first_container2_payse_play'){
+        recordtimer = setInterval(() => { 
+                recordsecondX++;
+                if( recordsecondX == 60 ){
+                   recorminnuteX++;
+                   if(recorminnuteX == 15){
+                      document.getElementsByClassName('container_block_record_first_container2_payse_button')[0].click();
+                   }else{
+                      recordsecondX = 0;  
+                   }
+                }
+                   
+                document.getElementById('record_time').innerHTML = (recorminnuteX < 15 ? '0'+recorminnuteX : recorminnuteX) +':' + (recordsecondX < 10 ?  '0'+recordsecondX : recordsecondX);
+             }, 1000);
+            
+        
+            recordtimer2 = setInterval(() => {
+                recordcircle += 0.165;
+                if (recordcircle > 100) {
+                    document.getElementsByClassName('pie')[0].style.borderRadius = 50 + '%';
+                    document.getElementsByClassName('pie')[0].style.background = 'rgba(246, 56, 103, 1)';
+                    document.getElementsByClassName('container_block_record_first_container2_payse_button')[0].style.background = '#ffffff';
+                }
+                document.getElementsByClassName('pie')[0].style.setProperty('--p', recordcircle);
+            }, 25);
+        
+        recorder.onaudioprocess = function(e) {
+            leftchannel.push(new Float32Array(e.inputBuffer.getChannelData(0)));
+            rightchannel.push(new Float32Array(e.inputBuffer.getChannelData(1)));
+            recordingLength += 2048;
+        }  
+        document.getElementsByClassName('container_block_record_first_container2_payse')[0].innerHTML = '<div class="container_block_record_first_container2_payse_block"></div><div class="container_block_record_first_container2_payse_block"></div>';
+    }else if(e.target.className == 'container_block_record_first_container2_payse_button'){
+        if( recorminnuteX > 0 || recordsecondX >= 15){
+            clearTimeout(recordtimer);
+            clearTimeout(recordtimer2);
+            
+            function flattenArray(channelBuffer, recordingLength) {
+                var result = new Float32Array(recordingLength);
+                var offset = 0;
+                for (var i = 0; i < channelBuffer.length; i++) {
+                    var buffer = channelBuffer[i];
+                    result.set(buffer, offset);
+                    offset += buffer.length;
+                }
+                return result;
+            }
+
+            function interleave(leftChannel, rightChannel) {
+                var length = leftChannel.length + rightChannel.length;
+                var result = new Float32Array(length);
+                var inputIndex = 0;
+                for (var index = 0; index < length;) {
+                    result[index++] = leftChannel[inputIndex];
+                    result[index++] = rightChannel[inputIndex];
+                    inputIndex++;
+                }
+                return result;
+            }
+
+
+            function writeUTFBytes(view, offset, string) {
+                for (var i = 0; i < string.length; i++) {
+                    view.setUint8(offset + i, string.charCodeAt(i));
+                }
+            }
+        
+        
+            recorder.disconnect(context.destination);
+            mediaStream.disconnect(recorder);
+            var leftBuffer = flattenArray(leftchannel, recordingLength);
+            var rightBuffer = flattenArray(rightchannel, recordingLength);
+            var interleaved = interleave(leftBuffer, rightBuffer);
+            var buffer = new ArrayBuffer(44 + interleaved.length * 2);
+            var view = new DataView(buffer);
+            writeUTFBytes(view, 0, 'RIFF');
+            view.setUint32(4, 44 + interleaved.length * 2, true);
+            writeUTFBytes(view, 8, 'WAVE');
+            writeUTFBytes(view, 12, 'fmt ');
+            view.setUint32(16, 16, true);
+            view.setUint16(20, 1, true);
+            view.setUint16(22, 2, true);
+            view.setUint32(24, sampleRate, true);
+            view.setUint32(28, sampleRate * 4, true);
+            view.setUint16(32, 4, true);
+            view.setUint16(34, 16, true);
+            writeUTFBytes(view, 36, 'data');
+            view.setUint32(40, interleaved.length * 2, true);
+            var index = 44;
+            var volume = 1;
+            for (var i = 0; i < interleaved.length; i++) {
+                view.setInt16(index, interleaved[i] * (0x7FFF * volume), true);
+                index += 2;
+            }
+
+            document.getElementsByClassName('container_block_record_first')[0].style.display = 'none';
+            
+            var file23 = new File([view], 'some.mp3',{type:"audio/mp3", lastModified:new Date().getTime()});
+			var container11 = new DataTransfer();
+			container11.items.add(file23);
+            document.getElementById('add_file2').files = container11.files;
+
+            document.getElementsByClassName('container_block_record_second')[0].innerHTML = '<div id="audio-spectrum" style="margin-top: 6vw;width: 90%;margin-bottom: 4vw;"></div><div style="margin-bottom: 2vw;" class="container_block_download_second_settings">  <div class="container_block_record_first_container2_stop"><svg class="container_block_record_first_container2_stop_div" viewBox="0 0 32 32" fill="none"><path id="btn-play0" d="M23.6693 17.1095C24.4609 16.5818 24.4609 15.4185 23.6693 14.8907L11.4063 6.71543C10.5202 6.12472 9.33337 6.75991 9.33337 7.82483V24.1755C9.33337 25.2404 10.5202 25.8756 11.4063 25.2849L23.6693 17.1095Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path style="display:none;" id="btn-payse0" d="M6.6665 7.99984C6.6665 7.26346 7.26346 6.6665 7.99984 6.6665H11.9998C12.7362 6.6665 13.3332 7.26346 13.3332 7.99984V23.9998C13.3332 24.7362 12.7362 25.3332 11.9998 25.3332H7.99984C7.26346 25.3332 6.6665 24.7362 6.6665 23.9998V7.99984Z M18.667 7.99984C18.667 7.26346 19.2639 6.6665 20.0003 6.6665H24.0003C24.7367 6.6665 25.3337 7.26346 25.3337 7.99984V23.9998C25.3337 24.7362 24.7367 25.3332 24.0003 25.3332H20.0003C19.2639 25.3332 18.667 24.7362 18.667 23.9998V7.99984Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><p id="current_time0">00:00</p></div><div class="container_block_download_first_container2_payse"><div id="btn-stop0" class="container_block_download_first_container2_payse_button"></div></div><input class="container_block_record_second_buttons_checkbox" type="checkbox" checked></div>      </div><div class="container_block_download_second_buttons"><button class="container_block_download_second_buttons1">Previous</button><button class="container_block_record_second_buttons2">Next</button></div>';
+            
+            loadAudio(new Blob([view], {type: 'audio/wav'}),0);
+            
+            recordsecondX = 0;
+            recorminnuteX = 0;
+            
+            /*document.getElementsByClassName('pie')[0].style.borderRadius = 0 + '%';
+            document.getElementsByClassName('pie')[0].style.background = 'none';
+            document.getElementsByClassName('container_block_record_first_container2_payse_button')[0].style.background = 'none';
+            document.getElementsByClassName('pie')[0].style.setProperty('--p', 0);*/
+            
+            document.getElementsByClassName('container_block_record_first')[0].innerHTML = '<div class="container_block_record_first_container1"><p>Add voice</p><span class="record_block">Record voice</span><span class="download_block">Download voice</span></div><div class="container_block_record_first_container2"><svg class="container_block_record_first_container2_icon" width="5vw" height="5vw" viewBox="0 0 56 56" fill="none"><circle class="container_block_record_first_container2_icon" cx="28" cy="28" r="28" fill="#44C9C5" fill-opacity="0.3"/><circle class="container_block_record_first_container2_icon" cx="28" cy="28" r="20" fill="#F63867"/><path class="container_block_record_first_container2_icon" d="M32 28V22C32 19.783 30.215 17.979 28.021 17.979C27.9506 17.9794 27.8805 17.9878 27.812 18.004C26.7853 18.0538 25.8169 18.4964 25.1074 19.2402C24.3978 19.984 24.0014 20.972 24 22V28C24 30.206 25.794 32 28 32C30.206 32 32 30.206 32 28ZM26 28V22C26 20.897 26.897 20 28 20C28.0547 20 28.1092 19.995 28.163 19.985C29.188 20.06 30 20.935 30 22V28C30 29.103 29.103 30 28 30C26.897 30 26 29.103 26 28Z M22 28H20C20 32.072 23.061 35.436 27 35.931V38H29V35.931C32.939 35.436 36 32.073 36 28H34C34 31.309 31.309 34 28 34C24.691 34 22 31.309 22 28Z" fill="white"/></svg></div>';
+            
+            Record_Page_Root = 1;
+            document.getElementsByClassName('active_circle_bl')[1].click();
+        }
+    }else if(e.target.getAttribute('class') == 'container_block_download_first_container2_button' ){
+        if( document.getElementById('add_file0').files[0] != undefined && document.getElementById('add_file1').files[0] != undefined){
+            document.getElementsByClassName('container_block_download_first')[0].style.display = 'none';
+            document.getElementsByClassName('container_block_download_second')[0].innerHTML = '<div class="container_block_download_second_block" style="display:flex;justify-content: space-evenly;align-items: center;width:100%;height:18vw;margin-top: 3vw;"><div class="container_block_download_second_settings"><div class="container_block_record_first_container2_stop"><svg class="container_block_record_first_container2_stop_div" viewBox="0 0 32 32" fill="none"><path id="btn-play0" d="M23.6693 17.1095C24.4609 16.5818 24.4609 15.4185 23.6693 14.8907L11.4063 6.71543C10.5202 6.12472 9.33337 6.75991 9.33337 7.82483V24.1755C9.33337 25.2404 10.5202 25.8756 11.4063 25.2849L23.6693 17.1095Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path style="display:none;" id="btn-payse0" d="M6.6665 7.99984C6.6665 7.26346 7.26346 6.6665 7.99984 6.6665H11.9998C12.7362 6.6665 13.3332 7.26346 13.3332 7.99984V23.9998C13.3332 24.7362 12.7362 25.3332 11.9998 25.3332H7.99984C7.26346 25.3332 6.6665 24.7362 6.6665 23.9998V7.99984Z M18.667 7.99984C18.667 7.26346 19.2639 6.6665 20.0003 6.6665H24.0003C24.7367 6.6665 25.3337 7.26346 25.3337 7.99984V23.9998C25.3337 24.7362 24.7367 25.3332 24.0003 25.3332H20.0003C19.2639 25.3332 18.667 24.7362 18.667 23.9998V7.99984Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><p id="current_time0">00:00</p></div><div class="container_block_download_first_container2_payse"><div id="btn-stop0" class="container_block_download_first_container2_payse_button"></div></div></div><div id="audio-spectrum" style="width: 75%;"></div></div>    <div class="container_block_download_second_block" style="display:flex;justify-content: space-evenly;align-items: center;width:100%;height:18vw;margin-top: 12vw;margin-bottom: 4vw;"><div class="container_block_download_second_settings"><div class="container_block_record_first_container2_stop"><svg class="container_block_record_first_container2_stop_div" viewBox="0 0 32 32" fill="none"><path id="btn-play1" d="M23.6693 17.1095C24.4609 16.5818 24.4609 15.4185 23.6693 14.8907L11.4063 6.71543C10.5202 6.12472 9.33337 6.75991 9.33337 7.82483V24.1755C9.33337 25.2404 10.5202 25.8756 11.4063 25.2849L23.6693 17.1095Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path style="display:none;" id="btn-payse1" d="M6.6665 7.99984C6.6665 7.26346 7.26346 6.6665 7.99984 6.6665H11.9998C12.7362 6.6665 13.3332 7.26346 13.3332 7.99984V23.9998C13.3332 24.7362 12.7362 25.3332 11.9998 25.3332H7.99984C7.26346 25.3332 6.6665 24.7362 6.6665 23.9998V7.99984Z M18.667 7.99984C18.667 7.26346 19.2639 6.6665 20.0003 6.6665H24.0003C24.7367 6.6665 25.3337 7.26346 25.3337 7.99984V23.9998C25.3337 24.7362 24.7367 25.3332 24.0003 25.3332H20.0003C19.2639 25.3332 18.667 24.7362 18.667 23.9998V7.99984Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><p id="current_time1">00:00</p></div><div class="container_block_download_first_container2_payse"><div id="btn-stop1" class="container_block_download_first_container2_payse_button"></div></div></div><div id="audio-spectrum4" style="width: 75%;"></div></div><div class="container_block_download_second_buttons"><button class="container_block_download_second_buttons1">Previous</button><button class="container_block_download_second_buttons2">Next</button></div>'; 
+            loadAudio( document.getElementById('add_file0').files[0] , 1);
+            
+            document.getElementsByClassName('container_block_download_second')[0].style.display = 'block';
+        
+        
+            Download_Page_Root = 1;
+            document.getElementsByClassName('active_circle_bl')[1].click();
+        }else if(document.getElementById('add_file0').files[0] != undefined || document.getElementById('add_file1').files[0] != undefined){
+            clearInterval(intevlav2);
+            document.getElementsByClassName('container_block_download_first')[0].style.display = 'none';
+            document.getElementsByClassName('container_block_download_second')[0].innerHTML = '<div id="audio-spectrum" style="width: 90%;margin-bottom: 4vw;margin-top: 8vw;"></div><div style="margin-bottom: 2vw;" class="container_block_download_second_settings">  <div class="container_block_record_first_container2_stop"><svg class="container_block_record_first_container2_stop_div" viewBox="0 0 32 32" fill="none"><path id="btn-play0" d="M23.6693 17.1095C24.4609 16.5818 24.4609 15.4185 23.6693 14.8907L11.4063 6.71543C10.5202 6.12472 9.33337 6.75991 9.33337 7.82483V24.1755C9.33337 25.2404 10.5202 25.8756 11.4063 25.2849L23.6693 17.1095Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path style="display:none;" id="btn-payse0" d="M6.6665 7.99984C6.6665 7.26346 7.26346 6.6665 7.99984 6.6665H11.9998C12.7362 6.6665 13.3332 7.26346 13.3332 7.99984V23.9998C13.3332 24.7362 12.7362 25.3332 11.9998 25.3332H7.99984C7.26346 25.3332 6.6665 24.7362 6.6665 23.9998V7.99984Z M18.667 7.99984C18.667 7.26346 19.2639 6.6665 20.0003 6.6665H24.0003C24.7367 6.6665 25.3337 7.26346 25.3337 7.99984V23.9998C25.3337 24.7362 24.7367 25.3332 24.0003 25.3332H20.0003C19.2639 25.3332 18.667 24.7362 18.667 23.9998V7.99984Z" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><p id="current_time0">00:00</p></div><div class="container_block_download_first_container2_payse"><div id="btn-stop0" class="container_block_download_first_container2_payse_button"></div></div><input class="container_block_download_second_buttons_checkbox" type="checkbox" checked></div>      </div><div class="container_block_download_second_buttons"><button class="container_block_download_second_buttons1">Previous</button><button class="container_block_download_second_buttons2">Next</button></div>';
+            loadAudio(document.getElementById('add_file0').files[0] || document.getElementById('add_file1').files[0],0);
+            
+            document.getElementsByClassName('container_block_download_second')[0].style.display = 'block';
+        
+        
+            Download_Page_Root = 1;
+            document.getElementsByClassName('active_circle_bl')[1].click();
+        }else{
+            alert('Error! Empty files.');
+        }
+    }else if( e.target.className == "delete_choise" ){
+        document.getElementById('add_file'+e.target.parentNode.getAttribute('data-id')).value ='';
+        
+        document.getElementsByClassName('container_block_download_first_container2_choise')[e.target.parentNode.getAttribute('data-id')].innerHTML='<div class="container_block_download_first_container2_add">+</div><label for="add_file'+e.target.parentNode.getAttribute('data-id')+'">Add file</label>';
+    }else if( e.target.className == 'container_block_download_second_buttons_checkbox' ){  
+        if( e.target.checked == true){
+           document.getElementsByClassName('wavesurfer-region')[1].style.display = 'block';
+           document.getElementsByClassName('wavesurfer-region')[0].style.height = 50 + '%';
+        }else{
+           document.getElementsByClassName('wavesurfer-region')[1].style.display = 'none';
+           document.getElementsByClassName('wavesurfer-region')[0].style.height = 100 + '%';
+        }
+    }else if( e.target.className == 'container_block_download_second_buttons_#1' ){
+         document.getElementsByClassName('container_block_download_second')[0].style.display = 'none';
+         document.getElementsByClassName('container_block_download_first')[0].style.display = 'block';
+    }else if( e.target.className == 'container_block_download_second_buttons2' || e.target.className == 'container_block_record_second_buttons2'){
+        if( document.getElementsByClassName('container_block_record')[0].style.display == 'none'){
+            document.getElementsByClassName('container_block_download')[0].style.display = 'none';
+            if(document.getElementById('audio-spectrum4')){
+               console.log('Загрузка - 2 файла');
+               cutter(document.getElementById('add_file0').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,2);
+            }else{
+                if(document.getElementsByClassName('container_block_download_second_buttons_checkbox')[0].checked){ 
+                    if(document.getElementById('add_file0').files[0]){
+                       console.log('Загрузка - 1 файл - 2 графика - 1file');
+                       cutter(document.getElementById('add_file0').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,1);
+                    }else{
+                       console.log('Загрузка - 1 файл - 2 графика - 2file');
+                       cutter(document.getElementById('add_file1').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,1);
+                    }
+                }else{
+                    if(document.getElementById('add_file0').files[0]){
+                       console.log('Загрузка - 1 файл - 1 график - 1file');
+                       cutter(document.getElementById('add_file0').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,0);
+                    }else{
+                       console.log('Загрузка - 1 файл - 1 график - 2file');
+                       cutter(document.getElementById('add_file1').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,0);
+                    }
+                }
+            }
+            Download_Page_Root = 2;
+            document.getElementsByClassName('active_circle_bl')[2].click();
+        }else{
+            //document.getElementsByClassName('container_block_record')[0].style.display = 'none';
+            if(document.getElementsByClassName('container_block_record_second_buttons_checkbox')[0].checked){
+                console.log('Запись - 2 графика');
+                cutter(document.getElementById('add_file2').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,1);
+            }else{
+                console.log('Запись - 1 график');
+                cutter(document.getElementById('add_file2').files[0],document.getElementsByClassName('regionstart')[0].innerHTML,document.getElementsByClassName('regionend')[0].innerHTML,0);
+            }
+            Record_Page_Root = 2;
+            document.getElementsByClassName('active_circle_bl')[2].click();
+        }
+        document.getElementsByClassName('container_block_third')[0].style.display = 'flex';
+        
+    }else if( e.target.className == 'active_circle_bl' ){
+        if( document.getElementsByClassName('container_block_record')[0].style.display == 'none'){
+            if(e.target.getAttribute('data-id') <= Download_Page_Root){
+                document.getElementsByClassName('active_circle_bl')[ Activ_Download_Page ].style.background = '#95938e';
+                e.target.style.background = '#66fcf1';
+                Activ_Download_Page = e.target.getAttribute('data-id');
+                
+                document.getElementsByClassName('container_block_download')[0].style.display = 'block';
+                if( Activ_Download_Page == 0 ){
+                    document.getElementsByClassName('container_block_download_first')[0].style.display = 'block';
+                    document.getElementsByClassName('container_block_download_second')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_third')[0].style.display = 'none';
+                }else if( Activ_Download_Page == 1 ){
+                    document.getElementsByClassName('container_block_download_first')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_download_second')[0].style.display = 'flex';
+                    document.getElementsByClassName('container_block_third')[0].style.display = 'none';
+                }else{
+                    document.getElementsByClassName('container_block_download_first')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_download_second')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_third')[0].style.display = 'block';
+                }
+            }
+        }else{
+            if(e.target.getAttribute('data-id') <= Record_Page_Root){
+                document.getElementsByClassName('active_circle_bl')[ Activ_Record_Page ].style.background = '#95938e';
+                e.target.style.background = '#66fcf1';
+                Activ_Record_Page = e.target.getAttribute('data-id');
+                
+                document.getElementsByClassName('container_block_record')[0].style.display = 'block';
+                if( Activ_Record_Page == 0 ){
+                    document.getElementsByClassName('container_block_record_first')[0].style.display = 'block';
+                    document.getElementsByClassName('container_block_record_second')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_third')[0].style.display = 'none';
+                }else if( Activ_Record_Page == 1 ){
+                    document.getElementsByClassName('container_block_record_first')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_record_second')[0].style.display = 'flex';
+                    document.getElementsByClassName('container_block_third')[0].style.display = 'none';
+                }else{
+                    document.getElementsByClassName('container_block_record_first')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_record_second')[0].style.display = 'none';
+                    document.getElementsByClassName('container_block_third')[0].style.display = 'block';
+                }
+            }
+        }     
+    }else if( e.target.getAttribute('class') == 'container_block_record_first_container2_stop_div'){
+        if( e.target.lastChild.style.display == 'none' ){
+            document.getElementById('btn-play'+e.target.nextSibling.id.slice(-1)).dispatchEvent(new Event('click'));
+        }else{
+            document.getElementById('btn-payse'+e.target.nextSibling.id.slice(-1)).dispatchEvent(new Event('click'));
+        }
+    }else if( e.target.className == 'container_block_download_first_container2_add' ){
+        e.target.nextElementSibling.click();  
+    }else if( e.target.className == 'container_block_download_second_buttons1'){
+        document.getElementsByClassName('active_circle_bl')[0].click();     
+    }
+}    
+
+
+async function cutter(file,start,end,type) {
+    await cutterLib.cut(file, start, end, function(blob) {
+        document.getElementsByClassName('container_block_third_sound1')[0].src=URL.createObjectURL(blob);
+        if( type == 1 ){
+            cutter1(file,parseFloat(document.getElementsByClassName('regionstart')[1].innerHTML),parseFloat(document.getElementsByClassName('regionend')[1].innerHTML));
+        }else if( type == 2 ){
+            cutter1(document.getElementById('add_file1').files[0],document.getElementsByClassName('regionstart')[1].innerHTML,document.getElementsByClassName('regionend')[1].innerHTML);     
+        }
+    });
+    
+    
+
+    async function cutter1(file1, start1, end1) {
+        await cutterLib.cut(file1, start1, end1, function(blob) {
+            document.getElementsByClassName('container_block_third_sound2')[0].src=URL.createObjectURL(blob);
+        });
+    }
+}
+
+
+
+
+var b=0;
+function check_file(element,c){
+    if(element.files[0].type == 'audio/mpeg'){
+        document.getElementById('audio_test').src=URL.createObjectURL(element.files[0]);
+        document.getElementById('audio_test').onloadedmetadata = function() {
+            if( document.getElementsByClassName('container_block_third_sound1')[0].duration > 899  ){
+                if( element.id == 'add_file0'){
+                   document.getElementById('add_file0').value ='';
+                }else{
+                   document.getElementById('add_file1').value ='';
+                }
+                alert('Error. You file more than 15 minutes');
+            }else{
+                if( b == 0 ){
+                  document.getElementsByClassName('container_block_download_first_container2')[0].innerHTML = '<div><div data-id="0" class="container_block_download_first_container2_choise"><p class="delete_choise">X</p><svg viewBox="0 0 94 94" fill="none"><path d="M47.0002 4.33337V89.6667M25.6668 31V63M89.6668 36.3334V57.6667M4.3335 36.3334V57.6667M68.3335 20.3334V73.6667" stroke="#44C9C5" stroke-width="8.48415" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="file_name">'+element.files[0].name.substring(0 , 42 )+'</p></div><div data-id="1" class="container_block_download_first_container2_choise"><div class="container_block_download_first_container2_add">+</div><label for="add_file1">Add file</label></div></div><button class="container_block_download_first_container2_button">Next</button>';
+                  b=1;
+                }else{
+                   document.getElementsByClassName('container_block_download_first_container2_choise')[c].innerHTML='<p class="delete_choise">X</p><svg viewBox="0 0 94 94" fill="none"><path d="M47.0002 4.33337V89.6667M25.6668 31V63M89.6668 36.3334V57.6667M4.3335 36.3334V57.6667M68.3335 20.3334V73.6667" stroke="#44C9C5" stroke-width="8.48415" stroke-linecap="round" stroke-linejoin="round"/></svg><p class="file_name">'+element.files[0].name.substring(0 , 42 )+'</p>';
+                }
+            }
+       }
+    }else{
+       alert('Uncorrect type of file. Please, choose mp3 file');
+    }
+}
+    
+    
+    
+    
+    
+function loadAudio(b,p){
+            
+            var buttons = {
+               play: document.getElementById("btn-play0"),
+               pause: document.getElementById("btn-payse0"),
+               stop: document.getElementById("btn-stop0")
+            };
+
+
+            var Spectrum = WaveSurfer.create({
+                container: '#audio-spectrum',
+                waveColor: '#44C9C5',
+                progressColor: '#44C9C5',
+                responsive: true,
+                barWidth: 3,
+                barRadius: 3,
+                cursorWidth: 2,
+                height: 152,
+                barGap: 3,
+            });
+
+
+
+            Spectrum.on('region-created', function(newRegion) {
+                if(newRegion.id == 1){
+                    document.getElementsByClassName('regionstart')[0].innerHTML = newRegion.start.toFixed(2);
+                    document.getElementsByClassName('regionend')[0].innerHTML = newRegion.end.toFixed(2);
+                }else{
+                    document.getElementsByClassName('regionstart')[1].innerHTML = newRegion.start.toFixed(2);
+                    document.getElementsByClassName('regionend')[1].innerHTML = newRegion.end.toFixed(2);
+                }
+            });
+
+            Spectrum.on('region-updated', function(newRegion) {       
+                if(newRegion.id == 1){
+                    document.getElementsByClassName('regionstart')[0].innerHTML = newRegion.start.toFixed(2);
+                    document.getElementsByClassName('regionend')[0].innerHTML = newRegion.end.toFixed(2);
+                }else{
+                    document.getElementsByClassName('regionstart')[1].innerHTML = newRegion.start.toFixed(2);
+                    document.getElementsByClassName('regionend')[1].innerHTML = newRegion.end.toFixed(2);
+                }
+            });
+
+
+            buttons.play.onclick = function() {
+                clearInterval(intevlav1);
+                Spectrum.play();
+                
+                intevlav1 = setInterval(()=>{
+                    console.log(1);
+                    document.getElementById('current_time0').innerHTML =(parseInt(Spectrum.getCurrentTime().toFixed(0)/60) < 10 ? '0'+parseInt(Spectrum.getCurrentTime().toFixed(0)/60) : parseInt(Spectrum.getCurrentTime().toFixed(0)/60)) +':' + (parseInt(Spectrum.getCurrentTime().toFixed(0)%60)<10 ?  '0'+parseInt(Spectrum.getCurrentTime().toFixed(0)%60) : parseInt(Spectrum.getCurrentTime().toFixed(0)%60));
+                },500);
+                
+                document.getElementById('btn-play0').style.display = 'none';
+                document.getElementById('btn-payse0').style.display = 'block';
+            }
+            
+            buttons.pause.addEventListener("click", function() {
+                Spectrum.pause();
+                
+                document.getElementById('btn-play0').style.display = 'block';
+                document.getElementById('btn-payse0').style.display = 'none';
+            }, false);
+
+            buttons.stop.addEventListener("click", function() {
+                Spectrum.stop();
+                document.getElementById('btn-play0').style.display = 'block';
+                document.getElementById('btn-payse0').style.display = 'none';
+            }, false);
+
+            Spectrum.on('ready', function() {
+                Spectrum.addRegion({
+                    id: 1,
+                    start: 0,
+                    end: 5,
+                    loop:false,
+                    drag: true,
+                    resize: true,
+                    maxLength: 15,
+                    minLength: 5,
+                    color: 'rgba(68, 201, 197, 0.2)'
+                })
+                
+                
+                if(p != 1){
+                Spectrum.addRegion({
+                    id: 2,
+                    start: 6,
+                    end: 10,
+                    loop: false,
+                    drag: true,
+                    resize: true,
+                    minLength: 5,
+                    color: 'rgba(246, 56, 103, 0.3)'
+                })
+                document.getElementsByClassName('wavesurfer-region')[0].style.height = 50 + '%';
+                document.getElementsByClassName('wavesurfer-region')[1].style.height = 50 + '%';
+                document.getElementsByClassName('wavesurfer-region')[1].style.top = 50 + '%';
+                }
+                
+                
+                document.getElementById('btn-play0').dispatchEvent(new Event('click'));
+                document.getElementById('btn-payse0').dispatchEvent(new Event('click'));
+            });
+            
+
+            window.addEventListener("resize", function() {
+                var currentProgress = Spectrum.getCurrentTime() / Spectrum.getDuration();
+                Spectrum.empty();
+                Spectrum.drawBuffer();
+                Spectrum.seekTo(currentProgress);
+            }, false);
+            Spectrum.load(URL.createObjectURL(b));
+            
+            
+    
+    
+    
+            if (p == 1) {
+                console.log('Второй войс');
+                var Spectrum2;
+                var buttons2 = {
+                   play: document.getElementById("btn-play1"),
+                   pause: document.getElementById("btn-payse1"),
+                   stop: document.getElementById("btn-stop1")
+                };
+
+
+                Spectrum2 = WaveSurfer.create({
+                    container: '#audio-spectrum4',
+                    waveColor: '#44C9C5',
+                    progressColor: '#44C9C5',
+                    responsive: true,
+                    barWidth: 3,
+                    barRadius: 3,
+                    cursorWidth: 2,
+                    height: 152,
+                    barGap: 3,
+                });
+
+
+
+                Spectrum2.on('region-created', function(newRegion) {
+                        document.getElementsByClassName('regionstart')[1].innerHTML = newRegion.start.toFixed(2);
+                        document.getElementsByClassName('regionend')[1].innerHTML = newRegion.end.toFixed(2);
+                });
+
+                Spectrum2.on('region-updated', function(newRegion) {       
+                        document.getElementsByClassName('regionstart')[1].innerHTML = newRegion.start.toFixed(2);
+                        document.getElementsByClassName('regionend')[1].innerHTML = newRegion.end.toFixed(2);
+                });
+
+
+                buttons2.play.onclick = function() {
+                    clearInterval(intevlav2);
+                    Spectrum2.play();
+
+                    intevlav2 = setInterval(()=>{
+                        console.log(1);
+                        document.getElementById('current_time1').innerHTML =(parseInt(Spectrum2.getCurrentTime().toFixed(0)/60) < 10 ? '0'+parseInt(Spectrum2.getCurrentTime().toFixed(0)/60) : parseInt(Spectrum2.getCurrentTime().toFixed(0)/60)) +':' + (parseInt(Spectrum2.getCurrentTime().toFixed(0)%60)<10 ?  '0'+parseInt(Spectrum2.getCurrentTime().toFixed(0)%60) : parseInt(Spectrum2.getCurrentTime().toFixed(0)%60));
+                    },500);
+                    
+                    document.getElementById('btn-play1').style.display = 'none';
+                    document.getElementById('btn-payse1').style.display = 'block';
+                }
+
+                buttons2.pause.addEventListener("click", function() {
+                    Spectrum2.pause();
+                    
+                    document.getElementById('btn-play1').style.display = 'block';
+                    document.getElementById('btn-payse1').style.display = 'none';
+                }, false);
+
+                buttons2.stop.addEventListener("click", function() {
+                    Spectrum2.stop();
+                    
+                    document.getElementById('btn-play1').style.display = 'block';
+                    document.getElementById('btn-payse1').style.display = 'none';
+                }, false);
+
+                Spectrum2.on('ready', function() {
+                    Spectrum2.addRegion({
+                        id: 3,
+                        start: 0,
+                        end: 5,
+                        loop:false,
+                        drag: true,
+                        resize: true,
+                        maxLength: 15,
+                        minLength: 5,
+                        color: 'rgba(246, 56, 103, 0.3)'
+                    })
+                    
+                    document.getElementById('btn-play1').dispatchEvent(new Event('click'));
+                    document.getElementById('btn-payse1').dispatchEvent(new Event('click'));
+
+                });
+
+
+                window.addEventListener("resize", function() {
+                    var currentProgress = Spectrum.getCurrentTime() / Spectrum.getDuration();
+                    Spectrum2.empty();
+                    Spectrum2.drawBuffer();
+                    Spectrum2.seekTo(currentProgress);
+                }, false);
+                Spectrum2.load(URL.createObjectURL(document.getElementById('add_file1').files[0]));
+            }
+}
+    
+document.getElementsByClassName('active_circle_bl')[0].click();
+</script>
+<script src="wave.js"></script>
+</body>
+</html>
