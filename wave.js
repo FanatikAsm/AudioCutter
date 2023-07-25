@@ -1514,11 +1514,11 @@ var secondregion=0;
                     if(secondregion==0){
                         this.style(c,{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",fontSize:"100%",cursor:"col-resize",position:"absolute",top:"0px",left:"-10px",height:"100%",width:"10px",background:"#44C9C5",borderRadius:"7px 0 0 7px"}),this.style(d, {display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",fontSize:"100%",cursor:"col-resize",position:"absolute",top:"0px",left:"100%",height:"100%",width:"10px",background:"#44C9C5",borderRadius:"0 7px 7px 0"});
                         secondregion++;
-                        a.innerHTML+='<div class="regionstart" style="position:absolute;bottom:100%;right:100%;"></div><div class="regionend" style="position:absolute;bottom:100%;left:100%;"></div>';
+                        a.innerHTML+='<div class="regionstart" style="position:absolute;bottom:100%;right:100%;color:rgb(68, 201, 197);"></div><div class="regionend" style="position:absolute;bottom:100%;left:100%;color:rgb(68, 201, 197);"></div>';
                     }else{
                         this.style(c,{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",fontSize:"100%",cursor:"col-resize",position:"absolute",top:"0px",left:"-10px",height:"100%",width:"10px",background:"#F63867",borderRadius:"7px 0 0 7px"}),this.style(d, {display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",fontSize:"100%",cursor:"col-resize",position:"absolute",top:"0px",left:"100%",height:"100%",width:"10px",background:"#F63867",borderRadius:"0 7px 7px 0"});
                         secondregion--;
-                        a.innerHTML+='<div class="regionstart" style="position:absolute;top:100%;right:100%;"></div><div class="regionend" style="position:absolute;top:100%;left:100%;"></div>';
+                        a.innerHTML+='<div class="regionstart" style="position:absolute;top:100%;right:100%;color:rgb(246, 56, 103);"></div><div class="regionend" style="position:absolute;top:100%;left:100%;color:rgb(246, 56, 103);"></div>';
                     }
                 }
                 (this.element = this.wrapper.appendChild(a)), this.updateRender(), this.bindEvents(a);
