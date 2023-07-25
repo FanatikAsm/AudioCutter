@@ -151,10 +151,16 @@
         .container_block_download_first_container2>label{
             padding: 1vw 3vw;
             background: #66fcf1;
-            font: 400 1.2vw Arial;
+            font: 400 1.6vw Arial;
             border-radius: 0.5vw;
             border: 0;
             color: #fff;
+            animation: shadow 4s infinite;
+        }
+        
+        @keyframes shadow {
+            0%,to {box-shadow: 0 0 0 0 rgba(102, 252, 241, .8);}
+            50% {box-shadow: 0 0 1vw 0 rgba(102, 252, 241, .8);}
         }
         
         .container_block_download_first_container2>input{
