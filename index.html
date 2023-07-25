@@ -682,7 +682,7 @@ document.onclick = e=>{
         document.getElementById('add_file'+e.target.parentNode.getAttribute('data-id')).value ='';
         
         document.getElementsByClassName('container_block_download_first_container2_choise')[e.target.parentNode.getAttribute('data-id')].innerHTML='<div class="container_block_download_first_container2_add">+</div><label for="add_file'+e.target.parentNode.getAttribute('data-id')+'">Add file</label>';
-    }else if( e.target.className == 'container_block_download_second_buttons_checkbox' ){  
+    }else if( e.target.className == 'container_block_download_second_buttons_checkbox' || e.target.className == 'container_block_record_second_buttons_checkbox' ){  
         if( e.target.checked == true){
            document.getElementsByClassName('wavesurfer-region')[1].style.display = 'block';
            document.getElementsByClassName('wavesurfer-region')[0].style.height = 50 + '%';
