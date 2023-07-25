@@ -240,18 +240,6 @@
             align-items: center;
         }
         
-        /*.{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: green;
-            width: 3vw;
-            height: 3vw;
-            border-radius: 50%;
-            font: 200 4vw Arial;
-            margin-bottom: 1vw;
-        }*/
-        
         .container_block_download_second_settings{
             display: flex;
             justify-content: space-between;
@@ -661,10 +649,11 @@ document.onclick = e=>{
             recordsecondX = 0;
             recorminnuteX = 0;
             
-            /*document.getElementsByClassName('pie')[0].style.borderRadius = 0 + '%';
+            recordcircle=0;
+            document.getElementsByClassName('pie')[0].style.borderRadius = 0 + '%';
             document.getElementsByClassName('pie')[0].style.background = 'none';
             document.getElementsByClassName('container_block_record_first_container2_payse_button')[0].style.background = 'none';
-            document.getElementsByClassName('pie')[0].style.setProperty('--p', 0);*/
+            document.getElementsByClassName('pie')[0].style.setProperty('--p', 0);
             
             document.getElementsByClassName('container_block_record_first')[0].innerHTML = '<div class="container_block_record_first_container1"><p>Add voice</p><span class="record_block">Record voice</span><span class="download_block">Download voice</span></div><div class="container_block_record_first_container2"><svg class="container_block_record_first_container2_icon" width="5vw" height="5vw" viewBox="0 0 56 56" fill="none"><circle class="container_block_record_first_container2_icon" cx="28" cy="28" r="28" fill="#44C9C5" fill-opacity="0.3"/><circle class="container_block_record_first_container2_icon" cx="28" cy="28" r="20" fill="#F63867"/><path class="container_block_record_first_container2_icon" d="M32 28V22C32 19.783 30.215 17.979 28.021 17.979C27.9506 17.9794 27.8805 17.9878 27.812 18.004C26.7853 18.0538 25.8169 18.4964 25.1074 19.2402C24.3978 19.984 24.0014 20.972 24 22V28C24 30.206 25.794 32 28 32C30.206 32 32 30.206 32 28ZM26 28V22C26 20.897 26.897 20 28 20C28.0547 20 28.1092 19.995 28.163 19.985C29.188 20.06 30 20.935 30 22V28C30 29.103 29.103 30 28 30C26.897 30 26 29.103 26 28Z M22 28H20C20 32.072 23.061 35.436 27 35.931V38H29V35.931C32.939 35.436 36 32.073 36 28H34C34 31.309 31.309 34 28 34C24.691 34 22 31.309 22 28Z" fill="white"/></svg></div>';
             
@@ -913,6 +902,10 @@ function loadAudio(b,p){
                 intevlav1 = setInterval(()=>{
                     console.log(1);
                     document.getElementById('current_time0').innerHTML =(parseInt(Spectrum.getCurrentTime().toFixed(0)/60) < 10 ? '0'+parseInt(Spectrum.getCurrentTime().toFixed(0)/60) : parseInt(Spectrum.getCurrentTime().toFixed(0)/60)) +':' + (parseInt(Spectrum.getCurrentTime().toFixed(0)%60)<10 ?  '0'+parseInt(Spectrum.getCurrentTime().toFixed(0)%60) : parseInt(Spectrum.getCurrentTime().toFixed(0)%60));
+                    
+                    if (Spectrum.getDuration().toFixed(0) == Spectrum.getCurrentTime().toFixed(0)) {
+                        document.getElementById('btn-stop0').click();
+                    }
                 },500);
                 
                 document.getElementById('btn-play0').style.display = 'none';
@@ -1022,6 +1015,10 @@ function loadAudio(b,p){
                     intevlav2 = setInterval(()=>{
                         console.log(1);
                         document.getElementById('current_time1').innerHTML =(parseInt(Spectrum2.getCurrentTime().toFixed(0)/60) < 10 ? '0'+parseInt(Spectrum2.getCurrentTime().toFixed(0)/60) : parseInt(Spectrum2.getCurrentTime().toFixed(0)/60)) +':' + (parseInt(Spectrum2.getCurrentTime().toFixed(0)%60)<10 ?  '0'+parseInt(Spectrum2.getCurrentTime().toFixed(0)%60) : parseInt(Spectrum2.getCurrentTime().toFixed(0)%60));
+                        
+                        if (Spectrum2.getDuration().toFixed(0) == Spectrum2.getCurrentTime().toFixed(0)) {
+                        document.getElementById('btn-stop1').click();
+                    }
                     },500);
                     
                     document.getElementById('btn-play1').style.display = 'none';
