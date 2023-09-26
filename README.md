@@ -177,7 +177,7 @@ a discussion in this repository or write to e-mail
 
 
 # 📘 License
-[MIT © Mark Filippov](https://github.com/FanatikAsm/AudioCutter/LICENSE)   
+[MIT © Mark Filippov](https://github.com/FanatikAsm/AudioCutter/LICENSE.TXT)   
 Copyright © «2023» «FanatikAsm»
 
 
