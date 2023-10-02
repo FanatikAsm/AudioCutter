@@ -48,9 +48,9 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
 <br />If you will choice 2 audio files, you will have two sound graphics timelines.
 <br />3) Cut your audio file/files and get it in new version
    
-- 📊 Download your audio file/files.
-- 💯 Record your sound.
-- ❌ Choice timelene and cut file/files.
+- 📥 Download your audio file/files.
+- 📼 Record your sound.
+- ✂️ Choice timelene and cut file/files.
 
 ![The long journey from experimentation to production.](https://disk.yandex.kz/i/lPmkfJMs5erbvw)
 
