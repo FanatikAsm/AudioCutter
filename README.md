@@ -26,7 +26,7 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
        <dd><a href="" target="blank">12kb</a></dd>
       </dl>
     </center>
-    <p align="right"><a href="" target="blank" align="right" >Data_filter</a></p>
+    <p align="right"><a href="" target="blank" align="right" >Audio_Cutter</a></p>
     </td>
   </tr>
 </table>
@@ -42,19 +42,20 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
 <br />
 
 
-🚀 There are 12 people in the database who can be filtered by parameters. You can filter by : 1)user role 2)language 3)subscription 4)country 5) regions 6)city and etc...
-<br /> Regions parametr can be active only if you choise contry. Because regions contains value information about the selected country.
-<br /> City parametr can be active only if you choise Regions. Because cities contains value information about the selected regions.
-- 📊 Show filtered information by parameters.
-- 💯 What percentage of users remain on the selected parameter.
-- ❌ Reset all parametrs in the selected column.
+🚀 There is a site which you can :
+<br />1) Record your sound, then choise one or two timelines on graphic. After that, your record sound will cut in your choice timeline
+<br />2) Download mp3 file. Choise one or two audio file. If you will choice 1 audio file , you can use two timelines for 1 sound graphic.
+<br />If you will choice 2 audio files, you will have two sound graphics timelines.
+<br />3) Cut your audio file/files and get it in new version
+   
+- 📊 Download your audio file/files.
+- 💯 Record your sound.
+- ❌ Choice timelene and cut file/files.
 
 ![The long journey from experimentation to production.](https://disk.yandex.kz/i/lPmkfJMs5erbvw)
 
-ZenML provides a user-friendly syntax designed for ML workflows, compatible with
-any cloud or tool. It enables centralized pipeline management, enabling
-developers to write code once and effortlessly deploy it to various
-infrastructures.
+The project enables 2 folders : 1)mp3_file_for_example 2)lib. 
+And 3 files : 1)index.html 2)cutter.js 3)wave.js
 <div align="center">
     <img src="docs/book/.gitbook/assets/stack.gif">
 </div>
@@ -69,87 +70,7 @@ It will load the remaining files.
 
 
 # 📜 Documentation
-ZenML allows you to create and manage your own MLOps platform using 
-best-in-class open-source and cloud-based technologies. Here is an example of 
-how you could set this up for your team:
 
-## 🔎 1. Filter
-
-There are three blocks with filters on the page. Every block has three select tags with onchange attribute.
-
-```html
-<select class="select" onchange="filter()">
-    <option>...</option>
-    <option>...</option>
-    <option>...</option>
-</select>
-```
-
-```javascript
-function filter(){
-   //code which check/filter from all select block....
-}
-
-filter();
-```
-
-Also the function performs:
-
-- **Count**: How many percent of a hundred is the selected block , 
-then displays on the graphic. 
-
-- **Active/not active select block with country and region**: If you have selected a country, then the block with the region becomes active. If a region is selected, the city block becomes active
-
-## 📋 2. Open and check data filter
-
-Shows filtered users with information about each.
-
-```html
-<button class="container_info_block_button">Ready list</button>
-```
-
-```javascript
-document.onclick = e=>{
-  if(){
-    
-  }else if( e.target.className == 'container_info_block_button' ){
-     // some code
-  }
-}
-```
-
-When you run a pipeline with this stack set, it will be running on your deployed
-Kubernetes cluster.
-
-You can also [deploy your own tooling manually](https://docs.zenml.io/stacks-and-components/stack-deployment).
-
-## 📑 3. New information inside filtered data
-
-Here's an example of updating user information:
-
-```html
-<div class="users_info_block_div3_container">
-    <div data-id="0" class="users_info_block_div3_button"></div>
-    <div data-id="1" class="users_info_block_div3_button"></div>
-    <div data-id="2" class="users_info_block_div3_button"></div>
-</div>
-```
-
-```javascript
-document.onclick = e=>{
-  if(){
-    
-  }else if( e.target.className == 'users_info_block_div3_button' ){
-     // some code
-  }
-}
-```
-
-
-
-## 📛 4. Reset filter block
-
-Click on the button inside block and reset all ‹select› tags in this container.
 
 
 
@@ -160,8 +81,10 @@ Click on the button inside block and reset all ‹select› tags in this contain
 
 # 🗺 Roadmap
 index.html is a main file which loads:
-- javascript.js
-- style.css
+- wave.js
+- cutter.js
+- lib/Mp3LameEncoder.min.js
+- lib/Mp3LameEncoder.min.js.mem
 <div align="center">
     <img src="docs/book/.gitbook/assets/stack.gif">
 </div>
@@ -179,11 +102,3 @@ a discussion in this repository or write to e-mail
 # 📘 License
 [MIT © Mark Filippov](https://github.com/FanatikAsm/AudioCutter/blob/main/LICENSE.TXT)   
 Copyright © «2023» «FanatikAsm»
-
-
-
-
-
-1) Record your sound, then choise one or two timelines on graphic. After that, your record sound will cut in your choice timeline
-2) Download mp3 file. Choise one or two audio file. If will you choice 1 audio file , you can use two timelines for 1 sound graphic.
-   If you will choice 2 audio files, you will have two sound graphics
