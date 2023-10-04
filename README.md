@@ -52,7 +52,7 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
 - 📼 Record your sound.
 - ✂️ Choice timelene and cut file/files.
 
-![Some Picture](https://disk.yandex.kz/i/lPmkfJMs5erbvw)
+![Project enable Picture](https://projectenable.syr.edu/data/5df39259e28d8.png)
 
 The project enables 2 folders : 1)mp3_file_for_example/ 2)lib/
 <br />And 3 files : 1)index.html 2)cutter.js 3)wave.js
