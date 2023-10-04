@@ -1,8 +1,8 @@
 <img src="https://raw.githubusercontent.com/matiassingers/awesome-readme/master/icon.png" align="right" />
 
 # AudioCutter [![Awesome](https://cdn.jsdelivr.net/gh/sindresorhus/awesome@d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome#readme)
-> **WARNING**
-> CUT FILE WORK ONLY ON SERVER OR LOCAL SERVER!!!!.
+> **IMPORTANT**
+> This program is not completed yet.
 <br />
 Record your sound or download mp3 file, then choise timeline and cut it in browser interface.
 
