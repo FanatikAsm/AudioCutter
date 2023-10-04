@@ -16,14 +16,14 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
     <center>
       <a href="" target="blank"><img src="y_min.svg" alt="youtube" align="left" /></a>
       <dl>
-       <dt><b>Site weight</b></dt>
-       <dd><a href="" target="blank">608,8 kb</a></dd>
-       <dt><b>Site requests</b></dt>
+       <dt><b>All project weight</b></dt>
+       <dd><a href="" target="blank">608,8kb</a></dd>
+       <dt><b>All project requests</b></dt>
        <dd><a href="" target="blank">5</a></dd>
-       <dt><b>CSS</b></dt>
-       <dd><a href="" target="blank">10,5 kb</a></dd>
-       <dt><b>JS</b></dt>
-       <dd><a href="" target="blank">541,7 kb</a></dd>
+       <dt><b>All CSS</b></dt>
+       <dd><a href="" target="blank">10,5kb</a></dd>
+       <dt><b>All JS</b></dt>
+       <dd><a href="" target="blank">541,7kb</a></dd>
       </dl>
     </center>
     <p align="right"><a href="" target="blank" align="right" >Audio_Cutter</a></p>
