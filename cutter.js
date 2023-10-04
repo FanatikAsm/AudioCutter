@@ -1,5 +1,5 @@
 class mp3cutter {
-	constructor(libPath = "/lib/", log = false) {
+	constructor(libPath = "/AudioCutter/lib/", log = false) {
         self.Mp3LameEncoderConfig = {
 			memoryInitializerPrefixURL: libPath,
 			TOTAL_MEMORY: 2073741824,
