@@ -8,7 +8,7 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
 
 
 ### Video. How is that work ?
-[![CLICK ME TO PLAY](https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![CLICK IT TO PLAY](https://www.nucleustechnologies.com/blog/wp-content/uploads/2020/12/video-is-not-available-1.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
 
 <table align="right" >
   <tr>
@@ -17,13 +17,13 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
       <a href="" target="blank"><img src="y_min.svg" alt="youtube" align="left" /></a>
       <dl>
        <dt><b>Site weight</b></dt>
-       <dd><a href="" target="blank">55kb</a></dd>
+       <dd><a href="" target="blank">608,8 kb</a></dd>
        <dt><b>Site requests</b></dt>
-       <dd><a href="" target="blank">12</a></dd>
+       <dd><a href="" target="blank">5</a></dd>
        <dt><b>CSS</b></dt>
-       <dd><a href="" target="blank">12kb</a></dd>
+       <dd><a href="" target="blank">10,5 kb</a></dd>
        <dt><b>JS</b></dt>
-       <dd><a href="" target="blank">12kb</a></dd>
+       <dd><a href="" target="blank">541,7 kb</a></dd>
       </dl>
     </center>
     <p align="right"><a href="" target="blank" align="right" >Audio_Cutter</a></p>
@@ -46,16 +46,16 @@ Record your sound or download mp3 file, then choise timeline and cut it in brows
 <br />1) Record your sound, then choise one or two timelines on graphic. After that, your record sound will cut in your choice timeline
 <br />2) Download mp3 file. Choise one or two audio file. If you will choice 1 audio file , you can use two timelines for 1 sound graphic.
 <br />If you will choice 2 audio files, you will have two sound graphics timelines.
-<br />3) Cut your audio file/files and get it in new version
+<br />3) Cut your audio file/files and get it in a new version
    
 - 📥 Download your audio file/files.
 - 📼 Record your sound.
 - ✂️ Choice timelene and cut file/files.
 
-![The long journey from experimentation to production.](https://disk.yandex.kz/i/lPmkfJMs5erbvw)
+![Some Picture](https://disk.yandex.kz/i/lPmkfJMs5erbvw)
 
-The project enables 2 folders : 1)mp3_file_for_example 2)lib. 
-And 3 files : 1)index.html 2)cutter.js 3)wave.js
+The project enables 2 folders : 1)mp3_file_for_example/ 2)lib/
+<br />And 3 files : 1)index.html 2)cutter.js 3)wave.js
 <div align="center">
     <img src="docs/book/.gitbook/assets/stack.gif">
 </div>
